@@ -16,12 +16,14 @@
 % along with TLD.  If not, see <http://www.gnu.org/licenses/>.
 
 % Compiles mex files
-clc; clear all; cd mex;
+clc; clear all; cd D:\git\OpenTLD_Given\mex;
 
 if ispc
     disp('PC');
-    include = ' -Ic:\OpenCV2.2\include\opencv\ -Ic:\OpenCV2.2\include\';
-    libpath = 'c:\OpenCV2.2\lib\';
+    %include = ' -Ic:\OpenCV2.2\include\opencv\ -Ic:\OpenCV2.2\include\';
+    include = ' -Id:\software\opencv\build\include\opencv\  -Id:\software\opencv\build\include\opencv2  -Id:\software\opencv\build\include\';
+    %libpath = 'c:\OpenCV2.2\lib\';
+    libpath='d:\software\opencv\build\x64\vc12\lib\';
     files = dir([libpath '*.lib']);
     
     lib = [];
