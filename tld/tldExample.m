@@ -21,7 +21,7 @@ global tld; % holds results and temporal variables
 
 % INITIALIZATION ----------------------------------------------------------
 
-opt.source = tldInitSource(opt.source); % select data source, camera/directory
+opt.source = tldInitSource(opt.source); % select data source, camera/directory 选择数据源
 
 figure(2); set(2,'KeyPressFcn', @handleKey); % open figure for display of results
 finish = 0; function handleKey(~,~), finish = 1; end % by pressing any key, the process will exit
