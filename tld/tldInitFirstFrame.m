@@ -17,11 +17,11 @@
 
 function source = tldInitFirstFrame(tld,source,min_win)
 
-% load the first frame into memory
+% load the first frame into memory 从源读取第一帧图像
 source.im0  = img_get(source,source.idx(1));
 
 % set the initial bounding box: 
-% - from file
+% - from file 选择从文件初始化跟踪框
 if source.camera == 0 && exist([source.input '/init.txt'],'file')
     bb = dlmread([source.input '/init.txt']);
     source.bb = bb(:);
@@ -30,7 +30,7 @@ if source.camera == 0 && exist([source.input '/init.txt'],'file')
     if isempty(source.bb) || min(bb_size(source.bb)) < min_win
         exit('Error: bounding box is incorrectly defined or too small');
     end
-% - by mouse    
+% - by mouse  选择用鼠标选择跟踪框
 else
     source.bb = bb_click(tld,source.im0.input);
     

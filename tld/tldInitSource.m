@@ -14,7 +14,7 @@
 % 
 % You should have received a copy of the GNU General Public License
 % along with TLD.  If not, see <http://www.gnu.org/licenses/>.
-
+%选择输入源函数
 function source = tldInitSource(source)
 % Initializes video stream from camera or an image sequence.
 
