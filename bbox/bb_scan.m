@@ -22,7 +22,7 @@ SHIFT = 0.1;
 SCALE = 1.2.^[-10:10];
 MINBB = min_win;
 
-% Chack if input bbox is smaller than minimum
+% Check if input bbox is smaller than minimum
 if min(bb_size(bb)) < MINBB
     bb_out = [];
     sca    = [];

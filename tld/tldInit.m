@@ -17,8 +17,8 @@
 
 function tld = tldInit(opt,tld)
 
-lk(0);
-
+lk(0);  %打印Lucas-Kanade
+%测试tld是否为空
 if ~isempty(tld);
     handle = tld.handle;
     tld = opt;
@@ -30,10 +30,10 @@ end
 
 % INITIALIZE DETECTOR =====================================================
 
-% Scanning grid
+% Scanning grid 初始化扫描网格
 [tld.grid tld.scales] = bb_scan(tld.source.bb,size(tld.source.im0.input),tld.model.min_win);
 
-% Features
+% Features 
 tld.nGrid     = size(tld.grid,2);
 tld.features  = tldGenerateFeatures(tld.model.num_trees,tld.model.num_features,0);
 
