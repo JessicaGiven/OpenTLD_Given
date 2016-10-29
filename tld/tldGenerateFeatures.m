@@ -14,7 +14,7 @@
 % 
 % You should have received a copy of the GNU General Public License
 % along with TLD.  If not, see <http://www.gnu.org/licenses/>.
-
+%这一部分完全没看懂
 function f = tldGenerateFeatures(nTREES, nFEAT, show)
 
 SHI = 1/5;

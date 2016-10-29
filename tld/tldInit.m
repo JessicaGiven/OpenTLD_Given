@@ -33,11 +33,11 @@ end
 % Scanning grid 初始化扫描网格
 [tld.grid tld.scales] = bb_scan(tld.source.bb,size(tld.source.im0.input),tld.model.min_win);
 
-% Features 
+% Features 这一部分没看懂
 tld.nGrid     = size(tld.grid,2);
 tld.features  = tldGenerateFeatures(tld.model.num_trees,tld.model.num_features,0);
 
-% Initialize Detector
+% Initialize Detector 初始化随机蕨检测器
 fern(0); % cleanup
 fern(1,tld.source.im0.input,tld.grid,tld.features,tld.scales); % allocate structures
 

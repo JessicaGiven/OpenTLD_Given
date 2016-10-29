@@ -143,7 +143,7 @@ double randdouble()
 	return rand()/(double(RAND_MAX)+1); 
 } 
 
-
+//mex入口函数
 void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 {
 	if (nrhs == 0) {
@@ -175,21 +175,21 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 		return;
 			 }
 
-			 // INIT: function(1, img, bb, features, scales)
+			 // INIT: function(1, img, bb, features, scales) 初始化函数输入参数结构
 			 //                0  1    2   3         4
 			 // =============================================================================
 	case 1:  {
 
-		if (nrhs!=5) { mexPrintf("fern: wrong input.\n"); return; }
-		if (BBOX!=0) { mexPrintf("fern: already initialized.\n"); return; }
-
+		if (nrhs!=5) { mexPrintf("fern: wrong input.\n"); return; } //参数个数不满足则退出
+		if (BBOX!=0) { mexPrintf("fern: already initialized.\n"); return; } //判断BBOX参数
+        //传入一系列参数
 		iHEIGHT    = mxGetM(prhs[1]);
 		iWIDTH     = mxGetN(prhs[1]);
 		nTREES     = mxGetN(mxGetField(prhs[3],0,"x"));
-		nFEAT      = mxGetM(mxGetField(prhs[3],0,"x")) / 4; // feature has 2 points: x1,y1,x2,y2
+		nFEAT      = mxGetM(mxGetField(prhs[3],0,"x")) / 4; // feature has 2 points: x1,y1,x2,y2 特征是两个像素的值
 		thrN       = 0.5 * nTREES;
 		nSCALE     = mxGetN(prhs[4]);
-
+        //传入
 		IIMG       = (double*) malloc(iHEIGHT*iWIDTH*sizeof(double));
 		IIMG2      = (double*) malloc(iHEIGHT*iWIDTH*sizeof(double));
 
