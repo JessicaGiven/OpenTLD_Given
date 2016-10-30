@@ -32,15 +32,15 @@ b = x; b(4,:) = b(4,:) + (SCA*rand(1,k)+OFF);
 x = [r l t b];
 
 idx = all(x([1 2],:) < 1 & x([1 2],:) > 0,1);
-x = x(:,idx);
-x(x > 1) = 1;
-x(x < 0) = 0;
+x = x(:,idx); %取前idx列
+x(x > 1) = 1; %所有元素大于1取1
+x(x < 0) = 0; %所有元素小于0 取0
 
-numF = size(x,2);
+numF = size(x,2); %取x列数
 
-x = x(:,randperm(numF));
-x = x(:,1:nFEAT*nTREES);
-x = reshape(x,4*nFEAT,nTREES);
+x = x(:,randperm(numF)); %以随机顺序取x前numF列
+x = x(:,1:nFEAT*nTREES); %取x的前nFEAT*nTREES列
+x = reshape(x,4*nFEAT,nTREES); %feature的最终结构是一个矩阵，4是单个蕨的特征数
 
 f.x = x;
 f.type = 'forest';

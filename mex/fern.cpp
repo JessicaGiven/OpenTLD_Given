@@ -37,7 +37,7 @@ static int *BBOX = NULL;
 static int *OFF  = NULL;
 static double *IIMG = 0;
 static double *IIMG2 = 0;
-static vector<vector <double> > WEIGHT;
+static vector<vector <double> > WEIGHT; //二维矢量
 static vector<vector <int> > nP;
 static vector<vector <int> > nN;
 static int BBOX_STEP = 7;
@@ -158,7 +158,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 
 	switch ((int) *mxGetPr(prhs[0])) {
 
-		// CLEANUP: function(0);
+		// CLEANUP: function(0); 清空随机蕨结构
 		// =============================================================================
 	case 0:  {
 		srand(0); // fix state of random generator
@@ -189,7 +189,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 		nFEAT      = mxGetM(mxGetField(prhs[3],0,"x")) / 4; // feature has 2 points: x1,y1,x2,y2 特征是两个像素的值
 		thrN       = 0.5 * nTREES;
 		nSCALE     = mxGetN(prhs[4]);
-        //传入
+        //为输入图片分配空间
 		IIMG       = (double*) malloc(iHEIGHT*iWIDTH*sizeof(double));
 		IIMG2      = (double*) malloc(iHEIGHT*iWIDTH*sizeof(double));
 
@@ -200,7 +200,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 		double *x  = mxGetPr(mxGetField(prhs[3],0,"x"));
 		double *s  = mxGetPr(prhs[4]);
 		OFF		   = create_offsets(s,x);
-
+        //新建随机蕨结构
 		for (int i = 0; i<nTREES; i++) {
 			WEIGHT.push_back(vector<double>(pow(2.0,nBIT*nFEAT), 0));
 			nP.push_back(vector<int>(pow(2.0,nBIT*nFEAT), 0));

@@ -41,7 +41,7 @@ tld.features  = tldGenerateFeatures(tld.model.num_trees,tld.model.num_features,0
 fern(0); % cleanup
 fern(1,tld.source.im0.input,tld.grid,tld.features,tld.scales); % allocate structures
 
-% Temporal structures
+% Temporal structures 创建临时结构
 tld.tmp.conf = zeros(1,tld.nGrid);
 tld.tmp.patt = zeros(tld.model.num_trees,tld.nGrid);
 
