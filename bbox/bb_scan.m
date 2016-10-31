@@ -15,6 +15,16 @@
 % You should have received a copy of the GNU General Public License
 % along with TLD.  If not, see <http://www.gnu.org/licenses/>.
 
+%扫描网格初始化函数
+
+%输入参数：
+%bb 目标标定框
+%imsize 输入图像尺寸
+%min_win 标定框的长、宽最小尺寸
+
+%输出参数：
+%bb_out 一个6xn的矩阵（n表示在当前有效尺度下共有多少个网格，前四行组成的列向量表示网格的四个顶点，第5行表示索引，第6行表示横向的分布点数）
+%sca 有效尺度下网格的长宽，为2xm的矩阵（m为有效尺度的个数）
 
 function [bb_out,sca] = bb_scan(bb, imsize,min_win)
 
@@ -29,9 +39,9 @@ if min(bb_size(bb)) < MINBB
     return;
 end
 
-bbW   = round(bb_width(bb) .* SCALE);
+bbW   = round(bb_width(bb) .* SCALE);   %对目标标定框进行尺度变换
 bbH   = round(bb_height(bb) .* SCALE);
-bbSHH = SHIFT * min(bbH,bbH);
+bbSHH = SHIFT * min(bbH,bbH);   %取bbW和bbH中的最小元素组成新的矩阵，表示变形之后目标标定框的移动步长
 bbSHW = SHIFT * min(bbH,bbW);
 
 bbF   = [2 2 imsize(2) imsize(1)]';
