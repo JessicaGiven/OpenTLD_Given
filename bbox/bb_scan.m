@@ -53,10 +53,10 @@ idx = 1;
 for i = 1:length(SCALE)
     if bbW(i) < MINBB || bbH(i) < MINBB, continue; end
     
-    left  = round(bbF(1):bbSHW(i):bbF(3)-bbW(i)-1);
-    top   = round(bbF(2):bbSHH(i):bbF(4)-bbH(i)-1);
+    left  = round(bbF(1):bbSHW(i):bbF(3)-bbW(i)-1); %新建整数序列，第一个数是2，步长是0.1*min(bbH,bbH)，结尾是320-bbW(i)-1
+    top   = round(bbF(2):bbSHH(i):bbF(4)-bbH(i)-1); %新建整数序列，第一个数是2，步长是0.1*min(bbH,bbW)，结尾是240-bbH(i)-1
     
-    grid  = ntuples(top,left);
+    grid  = ntuples(top,left); %返回一个2x(length(left)*length(top))的矩阵，每个列向量都是网格左上角顶点的坐标
     if isempty(grid), continue; end
     
     bbs{end+1} =  [grid(2,:); ...
